@@ -7,6 +7,7 @@ function resolve(dir) {
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
+  publicPath: process.env.VUE_APP_PUBLICPATH,
   outputDir: "9fGuide",
   assetsDir: "static",
   lintOnSave: process.env.NODE_ENV === "development",
