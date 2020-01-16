@@ -147,6 +147,64 @@
         </ul>
       </div>
     </div>
+    <div class="item input">
+      <h3>04 输入框 Input</h3>
+      <table>
+        <tr>
+          <td></td>
+          <td>默认</td>
+          <td>含清除按钮</td>
+        </tr>
+        <tr>
+          <td>Normal</td>
+          <td>
+            <input type="text" placeholder="请输入" />
+          </td>
+          <td>
+            <div class="clear">
+              <input type="text" placeholder="请输入" />
+              <i class="iconfont icon-closefilled"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Hover</td>
+          <td>
+            <input type="text" placeholder="请输入" class="h" />
+          </td>
+          <td>
+            <div class="clear h">
+              <input type="text" placeholder="请输入" class="h" />
+              <i class="iconfont icon-closefilled"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>
+            <input type="text" placeholder="请输入" class="f" />
+          </td>
+          <td>
+            <div class="clear f">
+              <input type="text" placeholder="请输入" class="f" />
+              <i class="iconfont icon-closefilled"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <input type="text" placeholder="请输入" disabled />
+          </td>
+          <td>
+            <div class="clear">
+              <input type="text" placeholder="请输入" disabled />
+              <i class="iconfont icon-closefilled"></i>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 <script>
@@ -178,14 +236,37 @@ export default {
           .toggleClass("on");
       });
     });
+
+    // 含清除按钮的 Input 输入框
+    $(".clear input[type='text']").each(function(index, element) {
+      $(element).focus(function() {
+        $(this).addClass("f");
+        $(this)
+          .parent(".clear")
+          .addClass("f");
+      });
+      $(element).blur(function() {
+        $(this).removeClass("f");
+        $(this)
+          .parent(".clear")
+          .removeClass("f");
+      });
+    });
+    $(".clear .icon-closefilled").each(function(index, element) {
+      $(element).click(function() {
+        $(this)
+          .siblings("input[type='text']")
+          .val("");
+      });
+    });
   }
 };
 </script>
 <style lang="scss" scoped>
 .componentGuide {
   .item {
-    margin-bottom: 60px;
-    h3 {
+    margin-bottom: 80px;
+    h3 { 
       font-size: 30px;
       color: #333;
       margin-top: 50px;
@@ -490,6 +571,76 @@ export default {
           }
           &:last-child {
             margin-right: 0;
+          }
+        }
+      }
+    }
+    &.input {
+      table {
+        tr {
+          td {
+            padding: 24px 100px 24px 0;
+            font-size: 18px;
+            color: #333;
+            &:first-child {
+              padding-right: 35px;
+            }
+          }
+          &:first-child {
+            td {
+              text-align: center;
+              padding: 40px 100px 0 0;
+            }
+          }
+        }
+      }
+      input[type="text"] {
+        width: 340px;
+        height: 32px;
+        border: 1px solid #d9d9d9;
+        border-radius: 2px;
+        padding-left: 10px;
+        &:hover,
+        &.h {
+          border-color: #999;
+        }
+        &:focus,
+        &.f {
+          border-color: #0091ff;
+          box-shadow: 0px 0px 4px 0px rgba(0, 145, 255, 0.3);
+        }
+        &[disabled] {
+          background-color: #f9f9f9;
+          border: 1px solid #d9d9d9 !important;
+          color: #b7b7b7;
+          cursor: not-allowed;
+        }
+      }
+      .clear {
+        position: relative;
+        .icon-closefilled {
+          display: none;
+          position: absolute;
+          top: 4px;
+          right: 5px;
+          font-size: 16px;
+          color: #ccc;
+        }
+        &:hover,
+        &:focus,
+        &.h,
+        &.f {
+          input[type="text"] {
+            padding-right: 22px;
+          }
+          .icon-closefilled {
+            display: block;
+          }
+        }
+        &:focus,
+        &.f {
+          .icon-closefilled {
+            color: #a5a5a5;
           }
         }
       }

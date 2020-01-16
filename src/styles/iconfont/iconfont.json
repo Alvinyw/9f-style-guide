@@ -1,0 +1,16 @@
+{
+  "id": "1615503",
+  "name": "前端开发规范",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8777387",
+      "name": "close_filled",
+      "font_class": "closefilled",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    }
+  ]
+}
