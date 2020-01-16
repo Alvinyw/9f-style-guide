@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+/9fGuide
 
 # Log files
 npm-debug.log*
