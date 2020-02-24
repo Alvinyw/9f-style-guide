@@ -5,8 +5,9 @@ Vue.use(Router)
 
 export const constantRoutes = [{
         path: '/styleGuide',
-        component: () => import('@/views/styleGuide'),
+        component: () => import('@/views/styleGuide')
     },
+
     {
         path: '/',
         redirect: '/styleGuide'
@@ -14,14 +15,8 @@ export const constantRoutes = [{
 
     {
         path: '/404',
-        component: () => import('@/views/404'),
-        meta: {
-            name: '',
-            icon: ''
-        },
-        children: []
+        component: () => import('@/views/404')
     },
-
 
     // 404 page must be placed at the end !!!
     {

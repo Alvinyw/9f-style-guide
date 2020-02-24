@@ -205,6 +205,58 @@
         </tr>
       </table>
     </div>
+    <div class="item select">
+      <h3>05 下拉框 Select</h3>
+      <ul>
+        <li>
+          <div class="lt">Normal</div>
+          <select>
+            <optgroup>
+              <option value="0">请选择</option>
+              <option value="1">北京</option>
+              <option value="2">上海</option>
+              <option value="3">广州</option>
+              <option value="4">深圳</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <div class="lt">Hover</div>
+          <select class="h">
+            <optgroup>
+              <option value="0">请选择</option>
+              <option value="1">北京</option>
+              <option value="2">上海</option>
+              <option value="3">广州</option>
+              <option value="4">深圳</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <div class="lt">Focus</div>
+          <select class="f">
+            <optgroup>
+              <option value="0">请选择</option>
+              <option value="1">北京</option>
+              <option value="2">上海</option>
+              <option value="3">广州</option>
+              <option value="4">深圳</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <div class="lt">Disabled</div>
+          <select disabled>
+            <optgroup>
+              <option value="1">北京</option>
+              <option value="2">上海</option>
+              <option value="3">广州</option>
+              <option value="4">深圳</option>
+            </optgroup>
+          </select>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -266,7 +318,7 @@ export default {
 .componentGuide {
   .item {
     margin-bottom: 80px;
-    h3 { 
+    h3 {
       font-size: 30px;
       color: #333;
       margin-top: 50px;
@@ -641,6 +693,48 @@ export default {
         &.f {
           .icon-closefilled {
             color: #a5a5a5;
+          }
+        }
+      }
+    }
+    &.select {
+      ul {
+        li {
+          margin-top: 40px;
+          &::after {
+            content: "";
+            display: block;
+            clear: both;
+          }
+          .lt {
+            width: 100px;
+            line-height: 32px;
+            float: left;
+            font-size: 18px;
+            color: #333;
+          }
+          select {
+            padding-left: 10px;
+            float: left;
+            width: 340px;
+            height: 32px;
+            border: 1px solid #d9d9d9;
+            border-radius: 2px;
+            color: #666;
+            &:hover,
+            &.h {
+              border-color: #999;
+            }
+            &:focus,
+            &.f {
+              box-shadow: 0px 0px 4px 0px rgba(0, 145, 255, 0.3);
+              border-color: rgba(0, 145, 255, 1);
+            }
+            &[disabled] {
+              border-color: #d9d9d9 !important;
+              background-color: #f9f9f9;
+              cursor: not-allowed;
+            }
           }
         }
       }
